@@ -54,7 +54,25 @@ textarea, input[type=number] {
     background-color: Transparent;
 }
 
+textarea {
+    border-radius: 10px;
+    resize: none;
+}
+
 form {
     border: 2px solid #9fabb8;
     padding: 10px;
+    border-radius: 10px;
+    margin-left: 
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
