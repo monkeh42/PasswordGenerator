@@ -1,0 +1,60 @@
+body {
+    color: #697f8c;
+    font-family: 'Raleway-Regular';
+    background-color: #242021;
+}
+
+@font-face {
+    font-family: 'Raleway-Regular';
+    src: url('static/Raleway-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url('static/Raleway-Bold.ttf') format('truetype');
+}
+
+button, input[type=submit] {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 4px solid #871e1f;
+    border-radius: 30px;
+    margin: 0 1px 0 1px;
+    width: 150px;
+    height: 50px;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    color:#871e1f;
+    font-family: 'Raleway-Bold';
+    font-size: 13pt;
+}
+
+input[type=number] {
+    width: 50px;
+    text-align: center;
+    float: right;
+}
+
+input[type=checkbox] {
+    margin-right:22px;
+    float: right;
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea, input[type=number] {
+    border: 2px solid #9fabb8;
+    line-height: 1.6em;
+    color: #9fabb8;
+    background-color: Transparent;
+}
+
+form {
+    border: 2px solid #9fabb8;
+    padding: 10px;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="js/passgen.js"></script>
+
+</head>
+<body>
+    <div width="900px">
+        <div style="width: 400px; float: left; margin-right: 50px;">
+            <form name="passForm" action="javascript:handleClick()">
+                <label for="numWords">Number of words per password (max 5):</label>
+                <input type="number" id="numWords" name="numWords" min="1" max="5" size="5" required><br><br>
+                <label for="numPass">Number of passwords:</label>
+                <input type="number" id="numPass" name="numPass" min="1" size="5" required><br><br>
+                <label for="strongTog">Extra-strong password?</label>
+                <input type="checkbox" id="strongTog" name="strongTog"><br><br>
+                <input type="submit" value="Generate">
+            </form>
+        </div>
+        <div style="width: 425px; float: left;">
+            <textarea name="outputText" id="outputText" wrap="soft" cols="40" rows="15" readonly></textarea><br><br>
+            <button onclick="clearOutput()">Clear</button><button onclick="exportCSV()">Download CSV</button>
+        </div>
+        <div style="float: clear;"></div>
+    </div>
+</body>
