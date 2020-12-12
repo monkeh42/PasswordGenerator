@@ -280,17 +280,43 @@ function genChars(format){
     return rString;
 }
 
-function genStrong() {
-    var chars = "~!@#$%^&*()+-_?01234567890{}[]=~!@#$%^&*+-_?";
+function genStrong(numPass, numChars, sym, num, low, upp, sim) {
+    const symC = "~`!@$%^&*()_-+={[}]|:;'<>.?/";
+    const numC = "1234567890";
+    const lowC = "qwertyuiopasdfghjklzxcvbnm";
+    const uppC = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    var chars = '';
     var password = '';
     var rnum;
+    var passwords = [];
 
-    for (l=0; l<15; l++) {
-        rnum = Math.floor(Math.random() * chars.length);
-        password += chars.substring(rnum,rnum+1);
+    if (sym) {
+        chars += symC;
+    }
+    if (num) {
+        chars += numC;
+    }
+    if (low) {
+        chars += lowC;
+    }
+    if (upp) {
+        chars += uppC;
     }
 
-    return password;
+    if (sim) {
+        chars = chars.replace(/1|i|I|\/|l|\||o|O|0/g, '');
+    }
+
+    for (n=0; n<numPass; n++) {
+        for (l=0; l<numChars; l++) {
+            rnum = Math.floor(Math.random() * chars.length);
+            password += chars.substring(rnum,rnum+1);
+        }
+        passwords.push(password);
+        password = '';
+    }
+
+    return passwords;
 }
 
 function genWords(numwords) {
@@ -326,6 +352,7 @@ function handleClick() {
     var passwords = '';
     var format;
     document.getElementsByName("outputText")[0].value = '';
+
     for (k=0; k<formatObj.length; k++) {
         if (formatObj[k].checked) {
             format = parseInt(formatObj[k].value);
@@ -344,16 +371,21 @@ function handleClick() {
 }
 
 function handleStrong() {
+    var numChars = parseInt(document.getElementsByName("numChars")[0].value);
     var numPass = parseInt(document.getElementsByName("numStrong")[0].value);
-    var password = ''; 
-    var passwords = '';
+    var sym = document.getElementsByName("incSymbols")[0].value;
+    var num = document.getElementsByName("incNumbers")[0].value;
+    var low = document.getElementsByName("incLower")[0].value;
+    var upp = document.getElementsByName("incUpper")[0].value;
+    var sim = document.getElementsByName("excSimilar")[0].value;
+    var passwords = [];
+    document.getElementsByName("outputText")[0].value = '';
 
-    for (h=0; h<numPass; h++) {
-        password = genStrong();
-        passwords += password + "\r\n";
+    passwords = genStrong(numPass, numChars, sym, num, low, upp, sim);
+
+    for (m=0; m<passwords.length; m++) {
+        document.getElementsByName("outputText")[0].value += passwords[m] + "\r\n";
     }
-
-    document.getElementsByName("outputText")[0].value = passwords;
 }
 
 function clearOutput() {

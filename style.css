@@ -51,11 +51,6 @@ input[type=number] {
     float: right;
 }
 
-input[type=checkbox] {
-    margin-right:22px;
-    float: right;
-}
-
 input[type='number']::-webkit-inner-spin-button, 
 input[type='number']::-webkit-outer-spin-button { 
     -webkit-appearance: none;
@@ -94,4 +89,85 @@ form {
 
 input[type="radio"], label[for="one"], label[for="two"] {
     float: right;
+}
+
+input[type="radio"] {
+    margin-right: 22px;
+}
+
+.check > input {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #9fabb8;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right:22px;
+    float: right;
+}
+
+.check > input:checked {
+    background-color: #871e1f;
+    border: 1px solid white;
+}
+
+.check > input:checked:hover {
+    border: 1px solid #9fabb8;
+}
+
+.check > input:checked + span::before {
+    content: "\2713";
+    display: block;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 0.7rem;
+    top: 0.2rem;
+}
+
+.check > input:hover {
+    border: 1px solid white;
+}
+
+.radio > input {
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: 1px solid #9fabb8;
+    border-radius: 50%;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right:22px;
+    float: right;
+}
+
+.radio > input:checked {
+    background-color: #871e1f;
+    border: 1px solid white;
+}
+
+.radio > input:checked:hover {
+    border: 1px solid #9fabb8;
+}
+
+.radio > input:checked + span::before {
+    content: "\2713";
+    display: block;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 0.7rem;
+    top: 0.2rem;
+}
+
+.radio > input:hover {
+    border: 1px solid white;
 }

@@ -7,29 +7,44 @@
 </head>
 <body>
     <div class="center">
-        <div style="width: 400px; float: left; margin-right: 50px; margin-left: 60px;">
+        <div style="width: 420px; float: left; margin-right: 30px; margin-left: 60px;">
             <form name="passForm" action="javascript:handleClick()">
                 <label for="numWords">Number of words per password (max 5):</label>
                 <input type="number" id="numWords" name="numWords" min="1" max="5" size="5" value="2" required><br><br>
                 <label for="numPass">Number of passwords:</label>
                 <input type="number" id="numPass" name="numPass" min="1" size="5" value="1" required><br><br>
                 Format:
+                <span class="radio">
                 <input type="radio" id="1" value="1" name="format" checked>
                 <label for="one"><span style="color: white;">Onetwothree&63</span></label><br><br>
                 <input type="radio" id="2" value="2" name="format">
-                <label for="two"><span style="color: white;">oneTWOthree28$$</span></label><br>
+                <label for="two"><span style="color: white;">oneTWOthree28$$</span></label><br><br>
+                </span>
                 <input type="submit" value="Generate">
             </form>
             <form name="strongForm" action="javascript:handleStrong()">
                 Generate an extra-strong password!<br><br>
-                Example: <span style="color: white;">1&{(]~8?1!^#*3$</span><br><br>
+                <label for="numPass">Number of characters (8 to 16):</label>
+                <input type="number" id="numChars" name="numChars" min="8" size="16" value="16" required><br><br>
                 <label for="numPass">Number of passwords:</label>
                 <input type="number" id="numStrong" name="numStrong" min="1" size="5" value="1" required><br><br>
+                <span class="check">
+                <label for="incSymbols">Include symbols:</label>
+                <input type="checkbox" id="incSymbols" name="incSymbols" checked><br><br>
+                <label for="incNumbers">Include numbers:</label>
+                <input type="checkbox" id="incNumbers" name="incNumbers" checked><br><br>
+                <label for="inclower">Include lowercase letters:</label>
+                <input type="checkbox" id="inclower" name="incLower" checked><br><br>
+                <label for="incUpper">Include uppercase letters:</label>
+                <input type="checkbox" id="incUpper" name="incUpper" checked><br><br>
+                <label for="excSimilar">Exclude similar characters (e.g. i, 1, 0, O):</label>
+                <input type="checkbox" id="excSimilar" name="excSimilar" checked><br><br>
+                </span>
                 <input type="submit" value="Generate">
             </form>
         </div>
         <div style="width: 425px; float: left;">
-            <textarea name="outputText" id="outputText" wrap="soft" cols="40" rows="16" readonly></textarea><br><br>
+            <textarea name="outputText" id="outputText" wrap="soft" cols="40" rows="25" readonly></textarea><br><br>
             <button onclick="clearOutput()">Clear</button><button onclick="exportCSV()">Download CSV</button>
         </div>
         <div style="float: clear;"></div>
