@@ -134,8 +134,8 @@ input[type="radio"] {
 }
 
 .radio > input {
-    height: 15px;
-    width: 15px;
+    height: 14px;
+    width: 14px;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
