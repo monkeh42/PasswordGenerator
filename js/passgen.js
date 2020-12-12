@@ -256,13 +256,13 @@ function randInt(lessThan) {
     return Math.floor(Math.random() * lessThan);
 }
 
-function genChars(strong){
-    var symbols = "~!@#$%^&*()+-_?";
+function genChars(format){
+    var symbols = "~!@#$%^&*+-_?";
     var nums = "01234567890"
     var rString = '';
     var rnum;
 
-    if (strong) {
+    if (format == 2) {
         for (i=0; i<2; i++) {
             rnum = Math.floor(Math.random() * nums.length);
             rString += nums.substring(rnum,rnum+1);
@@ -280,6 +280,19 @@ function genChars(strong){
     return rString;
 }
 
+function genStrong() {
+    var chars = "~!@#$%^&*()+-_?01234567890{}[]=~!@#$%^&*+-_?";
+    var password = '';
+    var rnum;
+
+    for (l=0; l<15; l++) {
+        rnum = Math.floor(Math.random() * chars.length);
+        password += chars.substring(rnum,rnum+1);
+    }
+
+    return password;
+}
+
 function genWords(numwords) {
     var words = [];
     for (i=0; i<numwords; i++){
@@ -288,11 +301,11 @@ function genWords(numwords) {
     return words;
 }
 
-function assemble(strong, numWords) {
+function assemble(format, numWords) {
     var password = '';
     var words = genWords(numWords);
 
-    if (strong) {
+    if (format == 2) {
         for (i=0; i<words.length; i++) {
             if (i % 2) { password += words[i].toUpperCase(); } else { password += words[i]; }
         }
@@ -302,26 +315,45 @@ function assemble(strong, numWords) {
         }
         password = password.charAt(0).toUpperCase() + password.slice(1);
     }
-    return password + genChars(strong);
+    return password + genChars(format);
 }
 
 function handleClick() {
     var numWords = parseInt(document.getElementsByName("numWords")[0].value);
-    var isStrong = document.getElementsByName("strongTog")[0].checked;
+    var formatObj = document.getElementsByName("format");
     var numPass = parseInt(document.getElementsByName("numPass")[0].value);
     var password = ''; 
     var passwords = '';
+    var format;
     document.getElementsByName("outputText")[0].value = '';
+    for (k=0; k<formatObj.length; k++) {
+        if (formatObj[k].checked) {
+            format = parseInt(formatObj[k].value);
+        }
+    }
 
     if (numPass>1) {
         for (j=0; j<numPass; j++) {
-            password = assemble(isStrong, numWords) + "\r\n";
-            passwords += password;
+            password = assemble(format, numWords);
+            passwords += password + "\r\n";
         }
-        document.getElementsByName("outputText")[0].value = passwords.slice(0, -2);
+        document.getElementsByName("outputText")[0].value = passwords;
     } else {
-        document.getElementsByName("outputText")[0].value = assemble(isStrong, numWords);
+        document.getElementsByName("outputText")[0].value = assemble(format, numWords);
     }
+}
+
+function handleStrong() {
+    var numPass = parseInt(document.getElementsByName("numStrong")[0].value);
+    var password = ''; 
+    var passwords = '';
+
+    for (h=0; h<numPass; h++) {
+        password = genStrong();
+        passwords += password + "\r\n";
+    }
+
+    document.getElementsByName("outputText")[0].value = passwords;
 }
 
 function clearOutput() {
@@ -335,7 +367,7 @@ function exportCSV() {
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "my_data.csv");
-    document.body.appendChild(link); // Required for FF
+    document.body.appendChild(link); 
 
     link.click();
 }

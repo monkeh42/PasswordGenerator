@@ -10,16 +10,26 @@
         <div style="width: 400px; float: left; margin-right: 50px; margin-left: 60px;">
             <form name="passForm" action="javascript:handleClick()">
                 <label for="numWords">Number of words per password (max 5):</label>
-                <input type="number" id="numWords" name="numWords" min="1" max="5" size="5" required><br><br>
+                <input type="number" id="numWords" name="numWords" min="1" max="5" size="5" value="2" required><br><br>
                 <label for="numPass">Number of passwords:</label>
-                <input type="number" id="numPass" name="numPass" min="1" size="5" required><br><br>
-                <label for="strongTog">Extra-strong password?</label>
-                <input type="checkbox" id="strongTog" name="strongTog"><br><br>
+                <input type="number" id="numPass" name="numPass" min="1" size="5" value="1" required><br><br>
+                Format:
+                <input type="radio" id="1" value="1" name="format" checked>
+                <label for="one"><span style="color: white;">Onetwothree&63</span></label><br><br>
+                <input type="radio" id="2" value="2" name="format">
+                <label for="two"><span style="color: white;">oneTWOthree28$$</span></label><br>
+                <input type="submit" value="Generate">
+            </form>
+            <form name="strongForm" action="javascript:handleStrong()">
+                Generate an extra-strong password!<br><br>
+                Example: <span style="color: white;">1&{(]~8?1!^#*3$</span><br><br>
+                <label for="numPass">Number of passwords:</label>
+                <input type="number" id="numStrong" name="numStrong" min="1" size="5" value="1" required><br><br>
                 <input type="submit" value="Generate">
             </form>
         </div>
         <div style="width: 425px; float: left;">
-            <textarea name="outputText" id="outputText" wrap="soft" cols="40" rows="15" readonly></textarea><br><br>
+            <textarea name="outputText" id="outputText" wrap="soft" cols="40" rows="16" readonly></textarea><br><br>
             <button onclick="clearOutput()">Clear</button><button onclick="exportCSV()">Download CSV</button>
         </div>
         <div style="float: clear;"></div>
