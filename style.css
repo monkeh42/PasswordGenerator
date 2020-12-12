@@ -87,8 +87,13 @@ form {
     transform: translate(-50%, -50%);
 }
 
-input[type="radio"], label[for="one"], label[for="two"] {
+input[type="radio"] {
     float: right;
+}
+
+label[for="one"], label[for="two"] {
+    padding-top: 2px;
+    float: left;
 }
 
 input[type="radio"] {
@@ -134,8 +139,8 @@ input[type="radio"] {
 }
 
 .radio > input {
-    height: 14px;
-    width: 14px;
+    height: 15px;
+    width: 15px;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
