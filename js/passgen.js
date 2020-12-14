@@ -257,7 +257,7 @@ function randInt(lessThan) {
 }
 
 function genChars(format){
-    var symbols = "~!@#$%^&*+-_?";
+    var symbols = "~!@$%^&*+-_?";
     var nums = "01234567890"
     var rString = '';
     var rnum;
