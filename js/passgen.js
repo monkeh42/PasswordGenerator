@@ -395,14 +395,26 @@ function handleWeak() {
         }
     }
 
-    if (numPass>1) {
-        for (j=0; j<numPass; j++) {
-            password = assemble(format, numWords, "random");
-            passwords += password + "\r\n";
+    if (wordsObjVal == "random") {
+        if (numPass>1) {
+            for (j=0; j<numPass; j++) {
+                password = assemble(format, numWords, "random");
+                passwords += password + "\r\n";
+            }
+            document.getElementsByName("outputText")[0].value = passwords;
+        } else {
+            document.getElementsByName("outputText")[0].value = assemble(format, numWords, "random");
         }
-        document.getElementsByName("outputText")[0].value = passwords;
     } else {
-        document.getElementsByName("outputText")[0].value = assemble(format, numWords, "random");
+        if (numPass>1) {
+            for (j=0; j<numPass; j++) {
+                password = assemble(format, numWords, "poke");
+                passwords += password + "\r\n";
+            }
+            document.getElementsByName("outputText")[0].value = passwords;
+        } else {
+            document.getElementsByName("outputText")[0].value = assemble(format, numWords, "poke");
+        }
     }
 }
 
